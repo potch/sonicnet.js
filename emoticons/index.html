@@ -33,6 +33,10 @@
   </div>
 
 </div>
-
+<script>
+navigator.getUserMedia = navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia;
+</script>
 <script src="build/all.js"></script>
 </body>
