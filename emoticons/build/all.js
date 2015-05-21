@@ -254,7 +254,7 @@ module.exports = SonicCoder;
 var RingBuffer = require('./ring-buffer.js');
 var SonicCoder = require('./sonic-coder.js');
 
-var audioContext = window.AudioContext || new webkitAudioContext();
+var audioContext = new AudioContext();
 /**
  * Extracts meaning from audio streams.
  *
@@ -504,12 +504,7 @@ SonicServer.prototype.debugDraw_ = function() {
  * background pages of an extension.
  */
 SonicServer.prototype.raf_ = function(callback) {
-  var isCrx = chrome.app.runtime || chrome.extension;
-  if (isCrx) {
-    setTimeout(callback, 1000/60);
-  } else {
-    requestAnimationFrame(callback);
-  }
+  requestAnimationFrame(callback);
 };
 
 SonicServer.prototype.restartServerIfSanityCheckFails = function() {
@@ -545,7 +540,8 @@ module.exports = SonicServer;
 },{"./ring-buffer.js":2,"./sonic-coder.js":3}],5:[function(require,module,exports){
 var SonicCoder = require('./sonic-coder.js');
 
-var audioContext = new (window.AudioContext || webkitAudioContext)();
+var audioContext = new AudioContext();
+console.log(audioContext.createMediaStreamSource);
 
 /**
  * Encodes text as audio streams.
