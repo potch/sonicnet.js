@@ -394,7 +394,7 @@ module.exports = SonicCoder;
 var RingBuffer = require('./ring-buffer.js');
 var SonicCoder = require('./sonic-coder.js');
 
-var audioContext = window.audioContext || new webkitAudioContext();
+var audioContext = window.AudioContext || new webkitAudioContext();
 /**
  * Extracts meaning from audio streams.
  *
@@ -685,7 +685,7 @@ module.exports = SonicServer;
 },{"./ring-buffer.js":3,"./sonic-coder.js":4}],6:[function(require,module,exports){
 var SonicCoder = require('./sonic-coder.js');
 
-var audioContext = window.audioContext || new webkitAudioContext();
+var audioContext = window.AudioContext || new webkitAudioContext();
 
 /**
  * Encodes text as audio streams.
